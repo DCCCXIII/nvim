@@ -1,8 +1,12 @@
 -- Visual stuff on editor
+vim.cmd("set colorcolumn=120")
 vim.g.mapleader= " "
 vim.cmd("set relativenumber")
 vim.cmd("set colorcolumn=80")
 vim.cmd("set scrolloff=12")
+
+-- some remaps
+vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
 -- Check for Lazy, install if not present
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -29,13 +33,15 @@ local plugins = {
 
 require("lazy").setup(plugins, opts)
 
--- catppuccin
+-- theme: catppuccin
+-- TODO : finda another theme maybe....
 require("catppuccin").setup()
 vim.cmd.colorscheme "catppuccin"
 
 -- telescope
 local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<C-p>', builtin.find_files, {})
+vim.keymap.set('n', '<leader>pf', builtin.find_files, {})
+vim.keymap.set('n', '<C-p>', builtin.git_files, {})
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 
 -- treesitter
