@@ -51,7 +51,11 @@ local plugins = {
 	},
 	{'neovim/nvim-lspconfig'},
 	{'hrsh7th/cmp-nvim-lsp'},
-	{'hrsh7th/nvim-cmp'}
+	{'hrsh7th/nvim-cmp'},
+    {
+      "williamboman/mason.nvim",
+      "williamboman/mason-lspconfig.nvim",
+    }
 }
 
 require("lazy").setup(plugins, opts)
@@ -104,7 +108,15 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
-require('lspconfig').gopls.setup{}
+require("mason").setup()
+require("mason-lspconfig").setup({
+    ensure_installed = {'gopls', 'rust_analyzer'},
+    handlers = {
+        function(server_name)
+            require('lspconfig')[server_name].setup({})
+        end,
+    },
+})
 
 local cmp = require('cmp')
 
