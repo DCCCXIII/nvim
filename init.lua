@@ -70,7 +70,7 @@ vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 local config = require("nvim-treesitter.configs")
 config.setup({
 	-- see supported languages in https://github.com/nvim-treesitter/nvim-treesitter?tab=readme-ov-file#supported-languages
-	ensure_installed = {"lua", "javascript", "go", "rust"},
+	ensure_installed = {"lua", "javascript", "go", "rust", "markdown_inline"},
 	highlight = { enable = true },
 	indent = { enable = true }
 })
