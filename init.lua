@@ -1,5 +1,4 @@
 -- Visual stuff on editor
-vim.cmd("set colorcolumn=120")
 vim.g.mapleader= " "
 vim.cmd("set relativenumber")
 vim.cmd("set nu")
